@@ -6,4 +6,12 @@ function getInitials(nomeIntero) {
 function createSlug(str) {
   return str.toLowerCase();
 }
-module.exports = { getInitials, createSlug };
+
+function average(array) {
+  let totale = 0;
+  for (let i = 0; i < array.length; i++) {
+    totale = totale + array[i];
+  }
+  return totale / array.length;
+}
+module.exports = { getInitials, createSlug, average };
