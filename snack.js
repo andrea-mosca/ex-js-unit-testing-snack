@@ -4,7 +4,11 @@ function getInitials(nomeIntero) {
 }
 
 function createSlug(str) {
-  return str.toLowerCase().replaceAll(" ", "-");
+  if (str.length === 0) {
+    throw new Error("il titolo non può essere vuoto");
+  } else {
+    return str.toLowerCase().replaceAll(" ", "-");
+  }
 }
 
 function average(array) {

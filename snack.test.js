@@ -34,3 +34,8 @@ test("La funzione createSlug sostituisce gli spazi con -.", () => {
 test("La funzione isPalindrome verifica se una stringa è un palindromo.", () => {
   expect(isPalindrome("yamamay")).toBeTruthy();
 });
+
+// snack 6
+test("La funzione createSlug lancia un errore se il titolo è vuoto o non valido.", () => {
+  expect(() => createSlug("")).toThrow("il titolo non può essere vuoto");
+});
