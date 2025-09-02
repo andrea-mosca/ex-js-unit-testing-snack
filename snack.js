@@ -14,4 +14,12 @@ function average(array) {
   }
   return totale / array.length;
 }
-module.exports = { getInitials, createSlug, average };
+
+function isPalindrome(str) {
+  str = str.toLowerCase().replaceAll(" ", "");
+
+  let reversed = str.split("").reverse().join("");
+
+  return str === reversed;
+}
+module.exports = { getInitials, createSlug, average, isPalindrome };
