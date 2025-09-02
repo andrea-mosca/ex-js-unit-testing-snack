@@ -3,6 +3,7 @@ const {
   createSlug,
   average,
   isPalindrome,
+  findPostById,
 } = require("./snack.js");
 // snack 1
 test("La funzione getInitials restituisce le iniziali di un nome completo", () => {
@@ -38,4 +39,50 @@ test("La funzione isPalindrome verifica se una stringa è un palindromo.", () =>
 // snack 6
 test("La funzione createSlug lancia un errore se il titolo è vuoto o non valido.", () => {
   expect(() => createSlug("")).toThrow("il titolo non può essere vuoto");
+});
+
+// snack 7
+
+const posts = [
+  {
+    id: 1,
+    title: "Introduzione a JavaScript",
+    slug: "introduzione-a-javascript",
+  },
+  {
+    id: 2,
+    title: "Guida a React",
+    slug: "guida-a-react",
+  },
+  {
+    id: 3,
+    title: "Node.js per principianti",
+    slug: "nodejs-per-principianti",
+  },
+  {
+    id: 4,
+    title: "Come usare Express",
+    slug: "come-usare-express",
+  },
+  {
+    id: 5,
+    title: "Imparare Git e GitHub",
+    slug: "imparare-git-e-github",
+  },
+];
+
+test("La funzione findPostById restituisce il post corretto dato l’array di post e l’id", () => {
+  const post = {
+    id: 1,
+    title: "Introduzione a JavaScript",
+    slug: "introduzione-a-javascript",
+  };
+  expect(findPostById(posts, 1)).toEqual(post);
+  expect(() => findPostById(post, "uno")).toThrow(
+    "L'ID passato non è un valore numerico"
+  );
+  expect(findPostById(posts, 10)).toBe(null);
+  expect(() => findPostById([12, 356, 4], 1)).toThrow(
+    "è stato passato un array errato"
+  );
 });

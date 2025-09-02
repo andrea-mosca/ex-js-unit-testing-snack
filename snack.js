@@ -26,4 +26,22 @@ function isPalindrome(str) {
 
   return str === reversed;
 }
-module.exports = { getInitials, createSlug, average, isPalindrome };
+
+function findPostById(posts, id) {
+  if (isNaN(id)) {
+    throw new Error("L'ID passato non è un valore numerico");
+  }
+  posts.forEach((p) => {
+    if (p.id === undefined || p.title === undefined || p.slug === undefined) {
+      throw new Error("è stato passato un array errato");
+    }
+  });
+  return posts.find((p) => p.id === id) || null;
+}
+module.exports = {
+  getInitials,
+  createSlug,
+  average,
+  isPalindrome,
+  findPostById,
+};
