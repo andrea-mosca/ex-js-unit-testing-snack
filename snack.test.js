@@ -91,6 +91,23 @@ describe("MANIPOLATORE DI ARRAY", () => {
     removePost(posts, 1);
     expect(posts).toHaveLength(4);
   });
+  // snack 9
+  test("Se si tenta di aggiungere un post con un id o uno slug già esistente, la funzione addPost deve lanciare un errore.", () => {
+    expect(() =>
+      addPost(posts, {
+        id: 1,
+        title: "prova",
+        slug: "prova-prova",
+      })
+    ).toThrow("post con id già esistente");
+    expect(() =>
+      addPost(posts, {
+        id: 7,
+        title: "Introduzione a JavaScript",
+        slug: "introduzione-a-javascript",
+      })
+    ).toThrow("slug già esistente");
+  });
 });
 
 // * SLUG

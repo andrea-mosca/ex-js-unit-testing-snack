@@ -39,6 +39,17 @@ function findPostById(posts, id) {
   return posts.find((p) => p.id === id) || null;
 }
 function addPost(posts, post) {
+  posts.find((p) => {
+    if (p.id === post.id) {
+      throw new Error("post con id già esistente");
+    }
+  });
+  posts.find((p) => {
+    if (p.slug === post.slug) {
+      throw new Error("slug già esistente");
+    }
+  });
+
   posts.push(post);
 }
 
