@@ -4,35 +4,9 @@ const {
   average,
   isPalindrome,
   findPostById,
+  addPost,
+  removePost,
 } = require("./snack.js");
-
-const posts = [
-  {
-    id: 1,
-    title: "Introduzione a JavaScript",
-    slug: "introduzione-a-javascript",
-  },
-  {
-    id: 2,
-    title: "Guida a React",
-    slug: "guida-a-react",
-  },
-  {
-    id: 3,
-    title: "Node.js per principianti",
-    slug: "nodejs-per-principianti",
-  },
-  {
-    id: 4,
-    title: "Come usare Express",
-    slug: "come-usare-express",
-  },
-  {
-    id: 5,
-    title: "Imparare Git e GitHub",
-    slug: "imparare-git-e-github",
-  },
-];
 
 // * ORGANIZZAZIONE CON DESCRIBE
 
@@ -48,6 +22,40 @@ describe("MANIPOLATORE DI STRINGHE", () => {
   test("La funzione isPalindrome verifica se una stringa è un palindromo.", () => {
     expect(isPalindrome("yamamay")).toBeTruthy();
   });
+});
+
+let posts = [];
+beforeEach(() => {
+  posts = [
+    {
+      id: 1,
+      title: "Introduzione a JavaScript",
+      slug: "introduzione-a-javascript",
+    },
+    {
+      id: 2,
+      title: "Guida a React",
+      slug: "guida-a-react",
+    },
+    {
+      id: 3,
+      title: "Node.js per principianti",
+      slug: "nodejs-per-principianti",
+    },
+    {
+      id: 4,
+      title: "Come usare Express",
+      slug: "come-usare-express",
+    },
+    {
+      id: 5,
+      title: "Imparare Git e GitHub",
+      slug: "imparare-git-e-github",
+    },
+  ];
+});
+afterEach(() => {
+  posts = [];
 });
 
 // * ARRAY
@@ -71,6 +79,17 @@ describe("MANIPOLATORE DI ARRAY", () => {
     expect(() => findPostById([12, 356, 4], 1)).toThrow(
       "è stato passato un array errato"
     );
+  });
+
+  // snack 8
+  test("Dopo aver aggiunto un post con la funzione addPost, l'array posts deve contenere un elemento in più.", () => {
+    addPost(posts, { id: 6, title: "nuovo post", slug: "nuovo-post" });
+    expect(posts).toHaveLength(6);
+  });
+
+  test("Dopo aver rimosso un post con la funzione removePost, l'array posts deve contenere un elemento in meno.", () => {
+    removePost(posts, 1);
+    expect(posts).toHaveLength(4);
   });
 });
 
